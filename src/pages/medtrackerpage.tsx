@@ -9,7 +9,7 @@ const MedTrackerPage: React.FC = () => {
     <>
       {/* Render the NavBar at the top */}
       <NavBar />
-
+      <div style={{height:'150px'}}></div>
       {/* Render the MedTracker component */}
       <MedTracker />
     </>

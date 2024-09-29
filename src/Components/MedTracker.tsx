@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
+    // margin: '150px auto',
     display: 'flex',
     justifyContent: 'space-between',
     padding: '20px',

@@ -8,7 +8,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     justifyContent: 'center',
     alignItems: 'center',
     padding: '40px',
-    margin: '0 auto',
+    margin: 'auto',
     maxWidth: '800px',
     textAlign: 'center',
     backgroundColor: '#ffffff', // Set the background color to white
@@ -34,7 +34,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     fontWeight: '600',
   },
   pageWrapper: {
-    backgroundColor: '#ffffff', // Set the background color to white for the entire page
+    backgroundColor: '#000', // Set the background color to white for the entire page
     padding: '20px',
     minHeight: '100vh',
   },
@@ -42,8 +42,11 @@ const styles: { [key: string]: React.CSSProperties } = {
 
 const OurMission: React.FC = () => {
   return (
-    <div style={styles.pageWrapper}>
+    // <div style={styles.pageWrapper}>
+    <>
       <NavBar />
+      <div style={{height:'150px'}}></div>
+
       <div style={styles.container}>
         <h1 style={styles.heading}>Our Mission</h1>
         <p style={styles.missionText}>
@@ -53,7 +56,8 @@ const OurMission: React.FC = () => {
           "Preserving yesterday, supporting today."
         </p>
       </div>
-    </div>
+      </>
+    // </div>
   );
 };
 

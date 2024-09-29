@@ -174,6 +174,7 @@ const EmergencyContactList: React.FC = () => {
     <>
       {/* Navigation Bar */}
       <NavBar />
+      <div style={{height:'150px'}}></div>
 
       {/* Main Content */}
       <div style={styles.container}>
