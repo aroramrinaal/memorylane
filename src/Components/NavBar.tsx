@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
 
 const styles: { [key: string]: React.CSSProperties } = {
   navBar: {
@@ -28,18 +29,10 @@ const styles: { [key: string]: React.CSSProperties } = {
   navItem: {
     position: 'relative',
     cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
   },
   navLink: {
     textDecoration: 'none',
     color: 'white',
-    display: 'flex',
-    alignItems: 'center',
-  },
-  dropdownIcon: {
-    marginLeft: '5px',
-    fontSize: '12px',
   },
   dropdownMenu: {
     display: 'none',
@@ -52,7 +45,6 @@ const styles: { [key: string]: React.CSSProperties } = {
     listStyleType: 'none',
     textAlign: 'left',
     minWidth: '150px',
-    right: 0, // Align dropdown to the right to prevent overflow
   },
   dropdownItem: {
     padding: '10px 15px',
@@ -60,6 +52,10 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   dropdownItemHover: {
     backgroundColor: '#555',
+  },
+  dropdownIcon: {
+    marginLeft: '5px',
+    fontSize: '12px',
   },
 };
 
@@ -77,9 +73,9 @@ const NavBar: React.FC = () => {
         </a>
         <ul style={styles.navLinks}>
           <li style={styles.navItem}>
-            <a href="/" style={styles.navLink}>
+            <Link href="/" style={styles.navLink}>
               Home
-            </a>
+            </Link>
           </li>
           <li
             style={styles.navItem}
@@ -88,17 +84,19 @@ const NavBar: React.FC = () => {
           >
             <span style={styles.navLink}>
               About Us
-              {/* Add a small dropdown arrow icon */}
               <span style={styles.dropdownIcon}>▼</span>
             </span>
             <ul
               style={{
                 ...styles.dropdownMenu,
                 display: visibleDropdown === 'about' ? 'block' : 'none',
-                right: '-10px', // Adjust the dropdown to the left to prevent overflow
               }}
             >
-              <li style={styles.dropdownItem}>Our Mission</li>
+              <li style={styles.dropdownItem}>
+                <Link href="/ourmission" passHref>
+                  <span>Our Mission</span>
+                </Link>
+              </li>
               <li style={styles.dropdownItem}>Our Team</li>
               <li style={styles.dropdownItem}>History</li>
             </ul>
@@ -110,19 +108,27 @@ const NavBar: React.FC = () => {
           >
             <span style={styles.navLink}>
               Our Services
-              {/* Add a small dropdown arrow icon */}
               <span style={styles.dropdownIcon}>▼</span>
             </span>
             <ul
               style={{
                 ...styles.dropdownMenu,
                 display: visibleDropdown === 'services' ? 'block' : 'none',
-                right: '-10px', // Adjust the dropdown to the left to fit inside the container
               }}
             >
               <li style={styles.dropdownItem}>24/7 Support</li>
               <li style={styles.dropdownItem}>Consultation</li>
               <li style={styles.dropdownItem}>Care Plans</li>
+              <li style={styles.dropdownItem}>
+                <Link href="/Emergency/contacts" passHref>
+                  <span>Emergency Contacts</span>
+                </Link>
+              </li>
+              <li style={styles.dropdownItem}>
+                <Link href="/medtrackerpage" passHref>
+                  <span>Medicine Tracker</span>
+                </Link>
+              </li>
             </ul>
           </li>
         </ul>
