@@ -1,5 +1,4 @@
 import React from 'react';
-import NavBar from '@/Components/NavBar'; // Import the NavBar component
 
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
@@ -43,7 +42,6 @@ const styles: { [key: string]: React.CSSProperties } = {
 const OurMission: React.FC = () => {
   return (
     <div style={styles.pageWrapper}>
-      <NavBar />
       <div style={styles.container}>
         <h1 style={styles.heading}>Our Mission</h1>
         <p style={styles.missionText}>

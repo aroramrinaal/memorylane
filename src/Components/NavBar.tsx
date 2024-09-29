@@ -129,6 +129,11 @@ const NavBar: React.FC = () => {
                   <span>Medicine Tracker</span>
                 </Link>
               </li>
+              <li style={styles.dropdownItem}>
+                <Link href="/gmap" passHref>
+                  <span>Get Directions</span>
+                </Link>
+              </li>
             </ul>
           </li>
         </ul>

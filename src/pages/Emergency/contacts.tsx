@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import NavBar from '@/Components/NavBar'; // Import NavBar component
 
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
@@ -103,6 +102,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
 };
 
+// TypeScript interface for contact data
 interface Contact {
   name: string;
   relationship: string;
@@ -171,52 +171,46 @@ const EmergencyContactList: React.FC = () => {
   };
 
   return (
-    <>
-      {/* Navigation Bar */}
-      <NavBar />
-
-      {/* Main Content */}
-      <div style={styles.container}>
-        {/* Left Panel for Input Form */}
-        <div style={styles.leftPanel}>
-          <h2 style={styles.heading}>{editIndex !== null ? 'Edit Contact' : 'Add New Contact'}</h2>
-          <div style={styles.formContainer}>
-            <input style={styles.input} type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-            <input style={styles.input} type="text" placeholder="Relationship" value={relationship} onChange={(e) => setRelationship(e.target.value)} />
-            <input style={styles.input} type="text" placeholder="Country Code (e.g., +1)" value={countryCode} onChange={(e) => setCountryCode(e.target.value)} />
-            <input style={styles.input} type="text" placeholder="Phone Number" value={phone} onChange={(e) => setPhone(e.target.value)} />
-            <input style={styles.input} type="text" placeholder="Extension (Optional)" value={extension} onChange={(e) => setExtension(e.target.value)} />
-            <div style={styles.checkboxContainer}>
-              <input type="checkbox" checked={isPreferred} onChange={(e) => setIsPreferred(e.target.checked)} />
-              <label>Set as Preferred Contact</label>
-            </div>
-            <button style={editIndex !== null ? styles.saveButton : styles.button} onClick={handleAddOrUpdateContact}>
-              {editIndex !== null ? 'Save Changes' : 'Add Contact'}
-            </button>
+    <div style={styles.container}>
+      {/* Left Panel for Input Form */}
+      <div style={styles.leftPanel}>
+        <h2 style={styles.heading}>{editIndex !== null ? 'Edit Contact' : 'Add New Contact'}</h2>
+        <div style={styles.formContainer}>
+          <input style={styles.input} type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+          <input style={styles.input} type="text" placeholder="Relationship" value={relationship} onChange={(e) => setRelationship(e.target.value)} />
+          <input style={styles.input} type="text" placeholder="Country Code (e.g., +1)" value={countryCode} onChange={(e) => setCountryCode(e.target.value)} />
+          <input style={styles.input} type="text" placeholder="Phone Number" value={phone} onChange={(e) => setPhone(e.target.value)} />
+          <input style={styles.input} type="text" placeholder="Extension (Optional)" value={extension} onChange={(e) => setExtension(e.target.value)} />
+          <div style={styles.checkboxContainer}>
+            <input type="checkbox" checked={isPreferred} onChange={(e) => setIsPreferred(e.target.checked)} />
+            <label>Set as Preferred Contact</label>
           </div>
-        </div>
-
-        {/* Right Panel for Displaying Contacts */}
-        <div style={styles.rightPanel}>
-          <h2 style={styles.heading}>Saved Contacts</h2>
-          <ul style={styles.contactList}>
-            {contacts.map((contact, index) => (
-              <li key={index} style={styles.contactItem}>
-                <div>
-                  <strong style={{ color: contact.isPreferred ? '#00796B' : '#000000' }}>{contact.name}</strong> ({contact.relationship}): {contact.countryCode} {contact.phone}
-                  {contact.extension && `, Ext: ${contact.extension}`}
-                  {contact.isPreferred && <span> ★</span>}
-                </div>
-                <div style={styles.buttonContainer}>
-                  <button style={styles.editButton} onClick={() => handleEditContact(index)}>Edit</button>
-                  <button style={styles.deleteButton} onClick={() => handleDeleteContact(index)}>Delete</button>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <button style={editIndex !== null ? styles.saveButton : styles.button} onClick={handleAddOrUpdateContact}>
+            {editIndex !== null ? 'Save Changes' : 'Add Contact'}
+          </button>
         </div>
       </div>
-    </>
+
+      {/* Right Panel for Displaying Contacts */}
+      <div style={styles.rightPanel}>
+        <h2 style={styles.heading}>Saved Contacts</h2>
+        <ul style={styles.contactList}>
+          {contacts.map((contact, index) => (
+            <li key={index} style={styles.contactItem}>
+              <div>
+                <strong style={{ color: contact.isPreferred ? '#00796B' : '#000000' }}>{contact.name}</strong> ({contact.relationship}): {contact.countryCode} {contact.phone}
+                {contact.extension && `, Ext: ${contact.extension}`}
+                {contact.isPreferred && <span> ★</span>}
+              </div>
+              <div style={styles.buttonContainer}>
+                <button style={styles.editButton} onClick={() => handleEditContact(index)}>Edit</button>
+                <button style={styles.deleteButton} onClick={() => handleDeleteContact(index)}>Delete</button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 };
 
