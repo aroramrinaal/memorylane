@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import axios from 'axios';
 import localFont from 'next/font/local';
 
 // Custom local fonts
@@ -16,6 +17,40 @@ const geistMono = localFont({
 });
 
 export default function Home() {
+  // State variables for the chatbot
+  const [inputMessage, setInputMessage] = useState('');
+  const [messages, setMessages] = useState<{ sender: string; text: string }[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  // Function to handle message submission
+  const sendMessage = async (event: React.FormEvent) => {
+    event.preventDefault();
+    if (inputMessage.trim() === '') return;
+
+    // Add user's message to the chat log
+    const userMessage = { sender: 'User', text: inputMessage };
+    setMessages((prevMessages) => [...prevMessages, userMessage]);
+    setInputMessage('');
+    setLoading(true);
+
+    try {
+      // Make POST request to the Next.js API route
+      const response = await axios.post('/api/generate', { prompt: userMessage.text });
+
+      // Add bot's response to the chat log
+      const botMessage = { sender: 'Bot', text: response.data.response };
+      setMessages((prevMessages) => [...prevMessages, botMessage]);
+    } catch (error) {
+      console.error('Error fetching bot response:', error);
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { sender: 'Bot', text: 'Sorry, I am currently unable to respond. Please try again later.' },
+      ]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div
       className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
@@ -47,7 +82,6 @@ export default function Home() {
               <span className="text-white font-semibold">Go to Contacts Page</span>
             </button>
           </Link>
-
           {/* Existing Button Links */}
           <a
             className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
@@ -57,6 +91,33 @@ export default function Home() {
           >
             Read our docs
           </a>
+        </div>
+
+        {/* Chatbot UI */}
+        <div className="w-full max-w-xl border rounded-lg p-4 mt-8 bg-white shadow-lg">
+          <h2 className="text-center text-2xl font-bold mb-4">Memory Lan Chatbot</h2>
+          <div className="max-h-64 overflow-y-auto p-4 border rounded-lg bg-gray-100 mb-4">
+            {messages.map((message, index) => (
+              <div key={index} className={`mb-2 ${message.sender === 'User' ? 'text-right' : 'text-left'}`}>
+                <strong>{message.sender}:</strong> {message.text}
+              </div>
+            ))}
+          </div>
+          <form onSubmit={sendMessage} className="flex flex-col gap-4">
+            <textarea
+              className="w-full border rounded-lg p-2"
+              placeholder="Type your message..."
+              value={inputMessage}
+              onChange={(e) => setInputMessage(e.target.value)}
+            />
+            <button
+              type="submit"
+              className={`w-full p-2 rounded-lg text-white ${loading ? 'bg-gray-400' : 'bg-blue-600 hover:bg-blue-700'}`}
+              disabled={loading}
+            >
+              {loading ? 'Sending...' : 'Send'}
+            </button>
+          </form>
         </div>
       </main>
 
