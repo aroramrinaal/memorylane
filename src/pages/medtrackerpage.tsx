@@ -1,8 +1,8 @@
 // src/pages/medtrackerpage.tsx
 
 import React from 'react';
-import NavBar from '@/Components/NavBar'; // Import NavBar component
-import MedTracker from '@/Components/MedTracker'; // Import the MedTracker component
+import NavBar from '@/components/NavBar'; // Import NavBar component
+import MedTracker from '@/components/MedTracker'; // Import the MedTracker component
 
 const MedTrackerPage: React.FC = () => {
   return (

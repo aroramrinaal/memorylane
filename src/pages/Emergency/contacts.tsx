@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import NavBar from '@/Components/NavBar'; // Import NavBar component
+import NavBar from '@/components/NavBar'; // Import NavBar component
 
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
