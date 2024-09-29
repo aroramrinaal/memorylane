@@ -23,7 +23,7 @@ export default function QuizPage() {
             />
           </div>
           <div className="bg-gray-900 p-8 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-semibold mb-6 text-green-500">Today's Progress</h2>
+            <h2 className="text-2xl font-semibold mb-6 text-green-500">Today &apos; s Progress</h2>
             <p className="text-lg mb-4">Date: {date?.toDateString()}</p>
             <p className="text-lg mb-4">Completed Activities: 0/3</p>
             <p className="text-lg">Points Earned: 0</p>

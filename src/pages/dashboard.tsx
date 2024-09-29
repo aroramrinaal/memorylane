@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import Image from 'next/image'
+// import { useState } from 'react'
+// import Image from 'next/image'
 import Link from 'next/link' // Add this import
 import NavBar from '@/components/Navbar'
 import { Button } from '@/components/ui/button'
