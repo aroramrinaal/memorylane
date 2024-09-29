@@ -13,7 +13,8 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": ["./src/*", "./app/*"]
+      "@/*": ["./src/*", "./app/*",],
+      "@components/*": ["./components/*"],
     },
     "baseUrl": "."
   },
