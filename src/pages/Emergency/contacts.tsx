@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import NavBar from '@/components/NavBar'; // Import NavBar component
+import NavBar from "@/components/NavBar";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
@@ -171,52 +173,115 @@ const EmergencyContactList: React.FC = () => {
   };
 
   return (
-    <>
-      {/* Navigation Bar */}
+    <div className="min-h-screen bg-gray-100">
       <NavBar />
-
-      {/* Main Content */}
-      <div style={styles.container}>
-        {/* Left Panel for Input Form */}
-        <div style={styles.leftPanel}>
-          <h2 style={styles.heading}>{editIndex !== null ? 'Edit Contact' : 'Add New Contact'}</h2>
-          <div style={styles.formContainer}>
-            <input style={styles.input} type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-            <input style={styles.input} type="text" placeholder="Relationship" value={relationship} onChange={(e) => setRelationship(e.target.value)} />
-            <input style={styles.input} type="text" placeholder="Country Code (e.g., +1)" value={countryCode} onChange={(e) => setCountryCode(e.target.value)} />
-            <input style={styles.input} type="text" placeholder="Phone Number" value={phone} onChange={(e) => setPhone(e.target.value)} />
-            <input style={styles.input} type="text" placeholder="Extension (Optional)" value={extension} onChange={(e) => setExtension(e.target.value)} />
-            <div style={styles.checkboxContainer}>
-              <input type="checkbox" checked={isPreferred} onChange={(e) => setIsPreferred(e.target.checked)} />
-              <label>Set as Preferred Contact</label>
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">Emergency Contacts</h1>
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Left Panel for Input Form */}
+          <div className="bg-white shadow-md rounded-lg p-6">
+            <h2 className="text-2xl font-semibold text-gray-700 mb-6">
+              {editIndex !== null ? 'Edit Contact' : 'Add New Contact'}
+            </h2>
+            <div className="space-y-4">
+              <input
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                type="text"
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <input
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                type="text"
+                placeholder="Relationship"
+                value={relationship}
+                onChange={(e) => setRelationship(e.target.value)}
+              />
+              <input
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                type="text"
+                placeholder="Country Code (e.g., +1)"
+                value={countryCode}
+                onChange={(e) => setCountryCode(e.target.value)}
+              />
+              <input
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                type="text"
+                placeholder="Phone Number"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+              <input
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                type="text"
+                placeholder="Extension (Optional)"
+                value={extension}
+                onChange={(e) => setExtension(e.target.value)}
+              />
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  checked={isPreferred}
+                  onChange={(e) => setIsPreferred(e.target.checked)}
+                  className="mr-2"
+                />
+                <label className="text-gray-700">Set as Preferred Contact</label>
+              </div>
+              <Button
+                onClick={handleAddOrUpdateContact}
+                className={cn(
+                  "w-full",
+                  editIndex !== null ? "bg-blue-600 hover:bg-blue-700" : "bg-green-600 hover:bg-green-700"
+                )}
+              >
+                {editIndex !== null ? 'Save Changes' : 'Add Contact'}
+              </Button>
             </div>
-            <button style={editIndex !== null ? styles.saveButton : styles.button} onClick={handleAddOrUpdateContact}>
-              {editIndex !== null ? 'Save Changes' : 'Add Contact'}
-            </button>
+          </div>
+
+          {/* Right Panel for Displaying Contacts */}
+          <div className="bg-white shadow-md rounded-lg p-6">
+            <h2 className="text-2xl font-semibold text-gray-700 mb-6">Saved Contacts</h2>
+            <ul className="space-y-4">
+              {contacts.map((contact, index) => (
+                <li key={index} className="bg-gray-50 p-4 rounded-md flex justify-between items-center">
+                  <div>
+                    <strong className={contact.isPreferred ? "text-blue-600" : "text-gray-800"}>
+                      {contact.name}
+                    </strong>
+                    <span className="text-gray-600"> ({contact.relationship})</span>
+                    <div className="text-sm text-gray-500">
+                      {contact.countryCode} {contact.phone}
+                      {contact.extension && `, Ext: ${contact.extension}`}
+                      {contact.isPreferred && <span className="ml-2 text-blue-600">★ Preferred</span>}
+                    </div>
+                  </div>
+                  <div className="space-x-2">
+                    <Button
+                      onClick={() => handleEditContact(index)}
+                      variant="outline"
+                      size="sm"
+                      className="bg-yellow-100 text-yellow-700 border-yellow-300 hover:bg-yellow-200"
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      onClick={() => handleDeleteContact(index)}
+                      variant="outline"
+                      size="sm"
+                      className="bg-red-100 text-red-700 border-red-300 hover:bg-red-200"
+                    >
+                      Delete
+                    </Button>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-
-        {/* Right Panel for Displaying Contacts */}
-        <div style={styles.rightPanel}>
-          <h2 style={styles.heading}>Saved Contacts</h2>
-          <ul style={styles.contactList}>
-            {contacts.map((contact, index) => (
-              <li key={index} style={styles.contactItem}>
-                <div>
-                  <strong style={{ color: contact.isPreferred ? '#00796B' : '#000000' }}>{contact.name}</strong> ({contact.relationship}): {contact.countryCode} {contact.phone}
-                  {contact.extension && `, Ext: ${contact.extension}`}
-                  {contact.isPreferred && <span> ★</span>}
-                </div>
-                <div style={styles.buttonContainer}>
-                  <button style={styles.editButton} onClick={() => handleEditContact(index)}>Edit</button>
-                  <button style={styles.deleteButton} onClick={() => handleDeleteContact(index)}>Delete</button>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
-    </>
+    </div>
   );
 };
 
