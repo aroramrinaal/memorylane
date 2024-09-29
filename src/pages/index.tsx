@@ -205,15 +205,15 @@ const MeetOurStaff = () => {
       <h3 className='font-bold text-black mt-4'>Aditya Madiya</h3>      
     </div>
     <div style={{textAlign:'center'}}>
-    <img style={styles.profilePic} src="/images/Arty.jpeg" alt="Atharva Verma"/>
+    <img style={styles.profilePic} src="https://i.imgur.com/lICzGAk.jpeg" alt="Atharva Verma"/>
       <h3 className='font-bold text-black mt-4'>Atharva Verma</h3>      
     </div>
     <div style={{textAlign:'center'}}>
-    <img style={styles.profilePic} src="/images/Dan.JPG" alt="Tien Dat Dang"/>
+    <img style={styles.profilePic} src="https://i.imgur.com/8QjNgpW.jpeg" alt="Tien Dat Dang"/>
       <h3 className='font-bold text-black mt-4'>Tien Dat Dang</h3>      
     </div>
     <div style={{textAlign:'center'}}>
-    <img style={styles.profilePic} src="/images/Mrinal.jpeg" alt="Mrinaal Arora"/>
+    <img style={styles.profilePic} src="https://i.imgur.com/Uhw9rOo.jpeg" alt="Mrinaal Arora"/>
       <h3 className='font-bold text-black mt-4'>Mrinaal Arora</h3>      
     </div>    
   </div>
