@@ -18,7 +18,7 @@ export default function ReminiscencePage() {
     fetchUploadedImages()
   }, [])
   const fetchUploadedImages = async () => {
-    setIsFetching(true) // Add this line
+    setIsFetching(true)
     try {
       const response = await fetch('http://localhost:8080/images')
       if (!response.ok) {
@@ -28,11 +28,21 @@ export default function ReminiscencePage() {
       setUploadedImages(data)
     } catch (error) {
       console.error('Error fetching images:', error)
-      toast.error('Failed to load images. Please try again.') // Add this line
+      // Remove the toast notification from here
     } finally {
-      setIsFetching(false) // Add this line
+      setIsFetching(false)
     }
   }
+
+  // Update this useEffect hook
+  useEffect(() => {
+    if (!isFetching && uploadedImages.length === 0) {
+      toast.error('Failed to load images. Please try again.', {
+        id: 'fetch-error', // Add this line
+      })
+    }
+  }, [isFetching, uploadedImages])
+
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       setSelectedFile(event.target.files[0])
@@ -54,10 +64,14 @@ export default function ReminiscencePage() {
       const data = await response.json()
       setUploadedImages(prevImages => [data, ...prevImages]) // Update this line
       setSelectedFile(null)
-      toast.success('Image uploaded successfully!') // Add this line
+      toast.success('Image uploaded successfully!', {
+        id: 'upload-success', // Add this line
+      })
     } catch (error) {
       console.error('Error uploading file:', error)
-      toast.error('Failed to upload image. Please try again.') // Add this line
+      toast.error('Failed to upload image. Please try again.', {
+        id: 'upload-error', // Add this line
+      })
     } finally {
       setIsLoading(false)
     }
