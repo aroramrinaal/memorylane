@@ -2,6 +2,13 @@ import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 import Image from "next/image";
 import styled from 'styled-components';
+import { ReactNode } from "react";
+
+interface ServiceCardProps {
+  icon: ReactNode;
+  title: string;
+  description: string;  
+}
 
 
 const Header = () => (
@@ -118,7 +125,7 @@ const AboutSection = () => (
   </div>
 );
 
-const ServiceCard = ({ icon, title, description }) => (
+const ServiceCard : React.FC<ServiceCardProps> = ({ icon, title, description }) => (
   <div className="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-md">
     <div className="text-green-500 mb-4">
       {icon}
@@ -224,39 +231,39 @@ const MeetOurStaff = () => {
   );
 };
 
-const NewsletterSignup = () => {
-  const [email, setEmail] = useState('');
+// const NewsletterSignup = () => {
+//   const [email, setEmail] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add your newsletter signup logic here
-    console.log('Subscribing email:', email);
-    // Reset the email input after submission
-    setEmail('');
-  };
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     // Add your newsletter signup logic here
+//     console.log('Subscribing email:', email);
+//     // Reset the email input after submission
+//     setEmail('');
+//   };
 
-  return (
-    <section className="bg-black text-white py-16">
-      <div className="container mx-auto px-4 text-center">
-        <h2 className="text-green-500 text-lg mb-2">QUALITY AI CONTACT FROM</h2>
-        <h3 className="text-4xl font-bold mb-8">Newsletter Signup</h3>
-        <form onSubmit={handleSubmit} className="flex justify-center">
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
-            required
-            className="w-full max-w-md px-4 py-2 rounded-l-md text-black"
-          />
-          <button type="submit" className="bg-green-500 text-white px-6 py-2 rounded-r-md hover:bg-green-600 transition duration-300">
-            SUBSCRIBE
-          </button>
-        </form>
-      </div>
-    </section>
-  );
-};
+//   return (
+//     <section className="bg-black text-white py-16">
+//       <div className="container mx-auto px-4 text-center">
+//         <h2 className="text-green-500 text-lg mb-2">QUALITY AI CONTACT FROM</h2>
+//         <h3 className="text-4xl font-bold mb-8">Newsletter Signup</h3>
+//         <form onSubmit={handleSubmit} className="flex justify-center">
+//           <input
+//             type="email"
+//             value={email}
+//             onChange={(e) => setEmail(e.target.value)}
+//             placeholder="Email"
+//             required
+//             className="w-full max-w-md px-4 py-2 rounded-l-md text-black"
+//           />
+//           <button type="submit" className="bg-green-500 text-white px-6 py-2 rounded-r-md hover:bg-green-600 transition duration-300">
+//             SUBSCRIBE
+//           </button>
+//         </form>
+//       </div>
+//     </section>
+//   );
+// };
 
 const Footer = () => {
   return (
@@ -313,7 +320,7 @@ const HomePage = () => (
     <AboutSection />
     <OurServices/>
     <MeetOurStaff/>
-    <NewsletterSignup/>
+    {/* <NewsletterSignup/> */}
     <Footer/>
   </div>
 );
