@@ -1,8 +1,8 @@
 // import { useState } from 'react'
 // import Image from 'next/image'
 import Link from 'next/link' // Add this import
-import NavBar from '@/components/Navbar'
-import { Button } from '@/components/ui/button'
+import NavBar from '@/Components/NavBar'
+import { Button } from '@/Components/ui/button'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 
 const dummyData = [

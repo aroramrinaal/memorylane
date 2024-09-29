@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import NavBar from '@/components/Navbar'
-import { Button } from '@/components/ui/button'
-import { Calendar } from '@/components/ui/calendar'
+import NavBar from '@/Components/NavBar'
+import { Button } from '@/Components/ui/button'
+import { Calendar } from '@/Components/ui/calendar'
 
 export default function QuizPage() {
   const [date, setDate] = useState<Date | undefined>(new Date())
