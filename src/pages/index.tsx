@@ -21,6 +21,7 @@ export default function Home() {
   const [inputMessage, setInputMessage] = useState('');
   const [messages, setMessages] = useState<{ sender: string; text: string }[]>([]);
   const [loading, setLoading] = useState(false);
+  const [showChatBot, setShowChatBot] = useState(false); // Control chatbot visibility
 
   // Function to handle message submission
   const sendMessage = async (event: React.FormEvent) => {
@@ -94,81 +95,42 @@ export default function Home() {
         </div>
 
         {/* Chatbot UI */}
-        <div className="w-full max-w-xl border rounded-lg p-4 mt-8 bg-white shadow-lg">
-          <h2 className="text-center text-2xl font-bold mb-4">Memory Lan Chatbot</h2>
-          <div className="max-h-64 overflow-y-auto p-4 border rounded-lg bg-gray-100 mb-4">
-            {messages.map((message, index) => (
-              <div key={index} className={`mb-2 ${message.sender === 'User' ? 'text-right' : 'text-left'}`}>
-                <strong>{message.sender}:</strong> {message.text}
-              </div>
-            ))}
+        {showChatBot && (
+          <div className="w-full max-w-xl border rounded-lg p-4 mt-8 bg-white shadow-lg">
+            <h2 className="text-center text-2xl font-bold mb-4">Memory Lane Chatbot</h2>
+            <div className="max-h-64 overflow-y-auto p-4 border rounded-lg bg-gray-100 mb-4 text-black">
+              {messages.map((message, index) => (
+                <div key={index} className={`mb-2 ${message.sender === 'User' ? 'text-right' : 'text-left'}`}>
+                  <strong>{message.sender}:</strong> {message.text}
+                </div>
+              ))}
+            </div>
+            <form onSubmit={sendMessage} className="flex flex-col gap-4">
+              <textarea
+                className="w-full border rounded-lg p-2"
+                placeholder="Type your message..."
+                value={inputMessage}
+                onChange={(e) => setInputMessage(e.target.value)}
+              />
+              <button
+                type="submit"
+                className={`w-full p-2 rounded-lg text-white ${loading ? 'bg-gray-400' : 'bg-blue-600 hover:bg-blue-700'}`}
+                disabled={loading}
+              >
+                {loading ? 'Sending...' : 'Send'}
+              </button>
+            </form>
           </div>
-          <form onSubmit={sendMessage} className="flex flex-col gap-4">
-            <textarea
-              className="w-full border rounded-lg p-2"
-              placeholder="Type your message..."
-              value={inputMessage}
-              onChange={(e) => setInputMessage(e.target.value)}
-            />
-            <button
-              type="submit"
-              className={`w-full p-2 rounded-lg text-white ${loading ? 'bg-gray-400' : 'bg-blue-600 hover:bg-blue-700'}`}
-              disabled={loading}
-            >
-              {loading ? 'Sending...' : 'Send'}
-            </button>
-          </form>
-        </div>
-      </main>
+        )}
 
-      {/* Footer */}
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        {/* Toggle Button for the Chatbot */}
+        <button
+          onClick={() => setShowChatBot((prev) => !prev)}
+          className="fixed bottom-5 left-5 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg z-50"
         >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          💬 {showChatBot ? 'Close Chat' : 'Open Chat'}
+        </button>
+      </main>
     </div>
   );
 }
