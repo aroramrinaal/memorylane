@@ -58,7 +58,7 @@ export default function LandingPage() {
                   </svg>
                 </div>
                 <h3 className="text-2xl font-semibold mb-4 text-gray-800">Interactive Timeline</h3>
-                <p className="text-gray-600 text-center">We create a personalized, interactive timeline of the patient's life for reminiscence therapy.</p>
+                <p className="text-gray-600 text-center">We create a personalized, interactive timeline of the patient&apos;s life for reminiscence therapy.</p>
               </div>
             </div>
           </div>
