@@ -11,7 +11,7 @@ export default function LandingPage() {
         <section className="py-20 bg-black text-white">
           <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
             <div className="lg:w-1/2 lg:pr-10 mb-10 lg:mb-0">
-              <h1 className="text-4xl lg:text-5xl font-bold mb-6">MemoryLane: AI-Powered Reminiscence Platform</h1>
+              <h1 className="text-4xl lg:text-5xl font-bold mb-6">Memorylane: AI-Powered Reminiscence Platform</h1>
               <p className="text-xl mb-8 text-gray-300">Bridging the gap in memory for those affected by dementia through personalized digital reminiscence therapy</p>
               <Button className="bg-green-500 hover:bg-green-600 text-white">Explore MemoryLane</Button>
             </div>

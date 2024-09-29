@@ -1,58 +1,27 @@
 import React from 'react';
-import NavBar from '@/Components/NavBar'; // Import the NavBar component
-
-const styles: { [key: string]: React.CSSProperties } = {
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: '40px',
-    margin: '0 auto',
-    maxWidth: '800px',
-    textAlign: 'center',
-    backgroundColor: '#ffffff', // Set the background color to white
-    borderRadius: '10px',
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)', // Light shadow for depth
-  },
-  heading: {
-    fontSize: '32px',
-    fontWeight: 'bold',
-    marginBottom: '20px',
-    color: '#000000', // Set text color to black
-  },
-  missionText: {
-    fontSize: '18px',
-    lineHeight: '1.6',
-    marginBottom: '30px',
-    color: '#000000', // Set text color to black
-  },
-  catchPhrase: {
-    fontSize: '24px',
-    fontStyle: 'italic',
-    color: '#000000', // Set text color to black
-    fontWeight: '600',
-  },
-  pageWrapper: {
-    backgroundColor: '#ffffff', // Set the background color to white for the entire page
-    padding: '20px',
-    minHeight: '100vh',
-  },
-};
+import NavBar from '@/Components/NavBar';
+import { Button } from "@/Components/ui/button"
 
 const OurMission: React.FC = () => {
   return (
-    <div style={styles.pageWrapper}>
+    <div className="flex flex-col min-h-screen bg-black text-white">
       <NavBar />
-      <div style={styles.container}>
-        <h1 style={styles.heading}>Our Mission</h1>
-        <p style={styles.missionText}>
-          At MemoryLane, we believe in providing support and resources for dementia patients and their families to help preserve the precious memories of the past and make daily living easier. Our mission is to empower caregivers and patients alike by offering thoughtful solutions, while fostering a compassionate community.
-        </p>
-        <p style={styles.catchPhrase}>
-          &ldquo;Preserving yesterday, supporting today.&rdquo;
-        </p>
-      </div>
+      <main className="flex-grow flex items-center justify-center py-20">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <h1 className="text-4xl lg:text-6xl font-bold mb-8 text-center">Our Mission</h1>
+          <div className="bg-gray-900 rounded-lg shadow-lg p-8 mb-8">
+            <p className="text-xl mb-6 leading-relaxed">
+              At Memorylane, we believe in providing support and resources for dementia patients and their families to help preserve the precious memories of the past and make daily living easier. Our mission is to empower caregivers and patients alike by offering thoughtful solutions, while fostering a compassionate community.
+            </p>
+            <p className="text-2xl font-semibold italic text-green-500 text-center">
+              "Preserving yesterday, supporting today."
+            </p>
+          </div>
+          <div className="text-center">
+            <Button className="bg-green-500 hover:bg-green-600 text-white">Join Our Cause</Button>
+          </div>
+        </div>
+      </main>
     </div>
   );
 };
