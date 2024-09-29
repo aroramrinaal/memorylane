@@ -46,6 +46,9 @@ const NavBar: React.FC = () => {
               </div>
             </div>
           </div>
+          <Link href="/dashboard" className={navItemStyle}>
+            Dashboard
+          </Link>
         </div>
 
         {/* Mobile menu button */}
@@ -97,6 +100,9 @@ const NavBar: React.FC = () => {
               Med Tracker
             </Link>
           </div>
+          <Link href="/dashboard" className="block text-xl text-white hover:text-green-500" onClick={() => setIsMenuOpen(false)}>
+            Dashboard
+          </Link>
         </div>
       </div>
     </nav>
