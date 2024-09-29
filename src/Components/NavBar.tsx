@@ -1,21 +1,29 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from "next/image";
+
 
 const styles: { [key: string]: React.CSSProperties } = {
   navBar: {
-    background: '#333333',
-    padding: '15px 20px',
+    position: 'absolute',
+    background: 'transparent',   // Make the navbar background transparent
+    // backdropFilter: 'blur(10px)', // Optional: Apply blur for a glass-like effect
+    padding: '15px 30px',
     color: 'white',
     display: 'flex',
+    flexDirection:'column',
     justifyContent: 'space-between',
     alignItems: 'center',
     fontSize: '20px',
     fontWeight: 'bold',
+    zIndex: '100',
+    width: '100%'
   },
   navContainer: {
     display: 'flex',
     justifyContent: 'space-between',
     width: '100%',
+    paddingRight: '30px'
   },
   navTitle: {
     color: 'white',
@@ -24,11 +32,12 @@ const styles: { [key: string]: React.CSSProperties } = {
   navLinks: {
     listStyleType: 'none',
     display: 'flex',
-    gap: '20px',
+    gap: '30px',
   },
   navItem: {
     position: 'relative',
     cursor: 'pointer',
+    fontSize: '20px'
   },
   navLink: {
     textDecoration: 'none',
@@ -37,8 +46,8 @@ const styles: { [key: string]: React.CSSProperties } = {
   dropdownMenu: {
     display: 'none',
     position: 'absolute',
-    backgroundColor: '#444',
-    color: '#fff',
+    backgroundColor: '#fff',
+    color: 'black',
     padding: '10px',
     borderRadius: '5px',
     top: '40px',
@@ -47,6 +56,8 @@ const styles: { [key: string]: React.CSSProperties } = {
     minWidth: '150px',
   },
   dropdownItem: {
+    fontWeight: 'normal',
+    fontSize: '15px',
     padding: '10px 15px',
     cursor: 'pointer',
   },
@@ -57,6 +68,12 @@ const styles: { [key: string]: React.CSSProperties } = {
     marginLeft: '5px',
     fontSize: '12px',
   },
+  divider: {
+    width: '100%',
+    height: '0.5px',
+    backgroundColor: '#4B4B4B',
+    marginTop: '15px',
+  }  
 };
 
 const NavBar: React.FC = () => {
@@ -67,14 +84,22 @@ const NavBar: React.FC = () => {
 
   return (
     <div style={styles.navBar}>
-      <div style={styles.navContainer}>
-        <a href="/" style={styles.navTitle}>
-          MemoryLane
-        </a>
+      <div style={styles.navContainer}>      
+      <Link href="/" className="flex items-center ml-20">            
+        <Image
+          className="mr-2 dark:invert"
+          src="https://nextjs.org/icons/next.svg"
+          alt="Next.js logo"
+          width={40}
+          height={40}
+          priority
+        />
+        <h1 className="text-2xl font-bold text-green-500">Memory Lane</h1>
+        </Link>      
         <ul style={styles.navLinks}>
           <li style={styles.navItem}>
             <Link href="/" style={styles.navLink}>
-              Home
+              HOME
             </Link>
           </li>
           <li
@@ -83,7 +108,7 @@ const NavBar: React.FC = () => {
             onMouseLeave={hideDropdown}
           >
             <span style={styles.navLink}>
-              About Us
+              ABOUT US
               <span style={styles.dropdownIcon}>▼</span>
             </span>
             <ul
@@ -107,7 +132,7 @@ const NavBar: React.FC = () => {
             onMouseLeave={hideDropdown}
           >
             <span style={styles.navLink}>
-              Our Services
+              OUR SERVICES
               <span style={styles.dropdownIcon}>▼</span>
             </span>
             <ul
@@ -131,8 +156,9 @@ const NavBar: React.FC = () => {
               </li>
             </ul>
           </li>
-        </ul>
+        </ul>        
       </div>
+      <div style={styles.divider}></div>      
     </div>
   );
 };

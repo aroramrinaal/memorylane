@@ -3,6 +3,8 @@ import { Search } from 'lucide-react';
 import Image from "next/image";
 import styled from 'styled-components';
 import { ReactNode } from "react";
+import NavBar from '@/Components/NavBar';
+import { Parallax } from 'react-parallax';
 
 interface ServiceCardProps {
   icon: ReactNode;
@@ -10,35 +12,16 @@ interface ServiceCardProps {
   description: string;  
 }
 
-
-const Header = () => (
-  <header className="bg-black text-white p-4">
-    <div className="container mx-auto flex justify-between items-center">
-      <div className="flex items-center">        
-        <Image
-          className="mr-2 dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={40}
-          height={40}
-          priority
-        />
-        <h1 className="text-2xl font-bold text-green-500">Memory Lane</h1>
-      </div>
-      <div className="flex items-center">
-        <Search className="mr-4" />
-        <button className="bg-green-500 text-white px-4 py-2 rounded">
-          APPOINTMENT
-        </button>
-      </div>
-      
-    </div>
-  </header>
-);
-
 const HeroSection = () => (
   <div className="relative h-screen bg-gray-800 text-white">
-    <img src="https://www.homecareassistanceroseville.com/wp-content/uploads/2018/06/AdobeStock_97047441.jpeg" alt="Senior care" className="w-full h-full object-cover opacity-50" />
+    <Parallax
+      bgImage="https://www.homecareassistanceroseville.com/wp-content/uploads/2018/06/AdobeStock_97047441.jpeg"
+      strength={500} // Adjust this value to control the effect strength
+      className="w-full h-full object-cover opacity-50"
+    >
+      <div style={{ height: 500 }}>        
+      </div>
+    </Parallax>    
     <div className="absolute inset-0 flex flex-col justify-center px-8">
       <p className="text-green-500 mb-2">RAISE YOUR VOICE TO WIN</p>
       <h2 className="text-5xl font-bold mb-4">Senior Care:<br />One Smile<br />At A Time</h2>
@@ -315,7 +298,7 @@ const Footer = () => {
 
 const HomePage = () => (
   <div className="min-h-screen flex flex-col">
-    <Header />
+    <NavBar/>    
     <HeroSection />
     <AboutSection />
     <OurServices/>
@@ -324,7 +307,5 @@ const HomePage = () => (
     <Footer/>
   </div>
 );
-
-
 
 export default HomePage;
