@@ -14,7 +14,7 @@ const OurMission: React.FC = () => {
               At Memorylane, we believe in providing support and resources for dementia patients and their families to help preserve the precious memories of the past and make daily living easier. Our mission is to empower caregivers and patients alike by offering thoughtful solutions, while fostering a compassionate community.
             </p>
             <p className="text-2xl font-semibold italic text-green-500 text-center">
-              "Preserving yesterday, supporting today."
+              &ldquo;Preserving yesterday, supporting today.&rdquo;
             </p>
           </div>
           <div className="text-center">

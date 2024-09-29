@@ -68,19 +68,13 @@ export default function LandingPage() {
         <section className="py-20 bg-green-500 text-white">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold mb-8 text-center">Revolutionizing Dementia Care</h2>
-            <p className="text-xl mb-8 text-center">MemoryLane is more than just an app - it's a bridge to the past, a tool for families to connect, and a beacon of hope for those affected by dementia.</p>
+            <p className="text-xl mb-8 text-center">MemoryLane is more than just an app - it&apos;s a bridge to the past, a tool for families to connect, and a beacon of hope for those affected by dementia.</p>
             <div className="text-center">
               <Button className="bg-white text-green-500 hover:bg-gray-100">Join Our Mission</Button>
             </div>
           </div>
         </section>
       </main>
-
-      <footer className="bg-white text-black py-8">
-        <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2024 MemoryLane. All rights reserved.</p>
-        </div>
-      </footer>
     </div>
   )
 }
