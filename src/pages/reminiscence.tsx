@@ -3,24 +3,20 @@ import Image from 'next/image'
 import NavBar from '@/components/Navbar'
 import { Button } from '@/components/ui/button'
 import { toast } from 'react-hot-toast' // Add this import
-
 interface UploadedImage {
   fileUrl: string
   tags: string[]
   _id: string
   uploadDate: string // Add this line
 }
-
 export default function ReminiscencePage() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
   const [uploadedImages, setUploadedImages] = useState<UploadedImage[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [isFetching, setIsFetching] = useState(true) // Add this line
-
   useEffect(() => {
     fetchUploadedImages()
   }, [])
-
   const fetchUploadedImages = async () => {
     setIsFetching(true) // Add this line
     try {
@@ -37,30 +33,24 @@ export default function ReminiscencePage() {
       setIsFetching(false) // Add this line
     }
   }
-
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       setSelectedFile(event.target.files[0])
     }
   }
-
   const handleUpload = async () => {
     if (!selectedFile) return
     setIsLoading(true)
-
     const formData = new FormData()
     formData.append('file', selectedFile)
-
     try {
       const response = await fetch('http://localhost:8080/upload', {
         method: 'POST',
         body: formData,
       })
-
       if (!response.ok) {
         throw new Error('Upload failed')
       }
-
       const data = await response.json()
       setUploadedImages(prevImages => [data, ...prevImages]) // Update this line
       setSelectedFile(null)
@@ -72,7 +62,6 @@ export default function ReminiscencePage() {
       setIsLoading(false)
     }
   }
-
   return (
     <div className="flex flex-col min-h-screen bg-black text-white">
       <NavBar />
@@ -97,7 +86,6 @@ export default function ReminiscencePage() {
             </Button>
           </div>
         </section>
-
         <section>
           <h2 className="text-2xl font-semibold mb-4 text-green-500">Your Memories</h2>
           {isFetching ? (
