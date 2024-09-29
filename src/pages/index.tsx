@@ -12,6 +12,12 @@ interface ServiceCardProps {
   description: string;  
 }
 
+const styles: {[key: string]: React.CSSProperties} = {
+  profilePic: {
+    height: '35vh', margin: 'auto', objectFit: 'contain', borderRadius: '10%'
+  }
+}
+
 const HeroSection = () => (
   <div className="relative h-screen bg-gray-800 text-white">
     <Parallax
@@ -195,24 +201,20 @@ const MeetOurStaff = () => {
           gridGap: '20px'
         }}>
     <div style={{textAlign:'center'}}>
-      <img style={{height: '35vh', margin: 'auto'}} src="https://image.tensorartassets.com/cdn-cgi/image/w=600/model_showcase/748332433088263852/1a66061e-7c10-b4a1-9db9-9e421f63f55b.jpeg" alt="Susan Friedland"/>
-      <h3 className='font-bold text-black'>Susan Friedland</h3>
-      <p className='text-black font-light'>Specialists</p>
+      <img style={styles.profilePic} src="/images/Aditya.jpeg" alt="Aditya Madiya"/>
+      <h3 className='font-bold text-black mt-4'>Aditya Madiya</h3>      
     </div>
     <div style={{textAlign:'center'}}>
-    <img style={{height: '35vh', margin: 'auto'}} src="https://image.tensorartassets.com/cdn-cgi/image/w=600/model_showcase/748332433088263852/1a66061e-7c10-b4a1-9db9-9e421f63f55b.jpeg" alt="Susan Friedland"/>
-      <h3 className='font-bold text-black'>Karin Nara</h3>
-      <p className='text-black font-light'>Registered nurses</p>
+    <img style={styles.profilePic} src="/images/Arty.jpeg" alt="Atharva Verma"/>
+      <h3 className='font-bold text-black mt-4'>Atharva Verma</h3>      
     </div>
     <div style={{textAlign:'center'}}>
-    <img style={{height: '35vh', margin: 'auto'}} src="https://image.tensorartassets.com/cdn-cgi/image/w=600/model_showcase/748332433088263852/1a66061e-7c10-b4a1-9db9-9e421f63f55b.jpeg" alt="Susan Friedland"/>
-      <h3 className='font-bold text-black'>Stacy Zamora</h3>
-      <p className='text-black font-light'>Dietitians</p>
+    <img style={styles.profilePic} src="/images/Dan.JPG" alt="Tien Dat Dang"/>
+      <h3 className='font-bold text-black mt-4'>Tien Dat Dang</h3>      
     </div>
     <div style={{textAlign:'center'}}>
-    <img style={{height: '35vh', margin: 'auto'}} src="https://image.tensorartassets.com/cdn-cgi/image/w=600/model_showcase/748332433088263852/1a66061e-7c10-b4a1-9db9-9e421f63f55b.jpeg" alt="Susan Friedland"/>
-      <h3 className='font-bold text-black'>Steve Herman</h3>
-      <p className='text-black font-light'>Pharmacists</p>
+    <img style={styles.profilePic} src="/images/Mrinal.jpeg" alt="Mrinaal Arora"/>
+      <h3 className='font-bold text-black mt-4'>Mrinaal Arora</h3>      
     </div>    
   </div>
 </div>
@@ -261,27 +263,25 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <h4 className="text-xl font-bold mb-4">About US</h4>
-            <p className="mb-4">There are many variations of passages Lorem Ipsum available, but the majority suffered alteration some form, injected humour, or randomised words.</p>
+            <p className="mb-4">MemoryLane is a digital platform designed to support dementia patients and caregivers by preserving memories, fostering meaningful interactions, and enhancing the quality of life through personalized, AI-powered tools.</p>
             <p className="text-green-500 text-xl font-bold">(+1)-800-456-478</p>
           </div>
           <div>
             <h4 className="text-xl font-bold mb-4">Popular Service</h4>
             <ul className="space-y-2">
-              <li>Brakes Repair</li>
-              <li>Air Conditioning</li>
-              <li>Engine Diagnostics</li>
-              <li>Lub, Oil & Filter</li>
-              <li>Exhaust Repair</li>
+              <li>Memory Tagging</li>
+              <li>Convo Starters</li>
+              <li>Medicine Tracker</li>
+              <li>Activity Scheduler</li>
+              <li>RT Collaboration</li>
             </ul>
           </div>
           <div>
             <h4 className="text-xl font-bold mb-4">Support</h4>
             <ul className="space-y-2">
               <li>Home</li>
-              <li>About</li>
-              <li>Blog</li>
+              <li>About</li>              
               <li>Contact</li>
-              <li>Protfolio</li>
             </ul>
           </div>
           <div>
@@ -290,13 +290,12 @@ const Footer = () => {
               <li>Information</li>
               <li>Policy</li>
               <li>Brand</li>
-              <li>Site Map</li>
             </ul>
           </div>
         </div>
       </div>
       <div className="mt-16 text-center">
-        <p>© 2024 All Rights Reserved. Developed By CoderPlace</p>
+        <p>© 2024 All Rights Reserved. Developed By MemoryLane</p>
       </div>
     </footer>
   );
