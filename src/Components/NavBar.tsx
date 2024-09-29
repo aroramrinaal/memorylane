@@ -91,8 +91,8 @@ const NavBar: React.FC = () => {
       <div style={styles.navContainer}>      
       <Link href="/" className="flex items-center ml-20">            
         <Image
-          className="mr-2 dark:invert"
-          src="https://nextjs.org/icons/next.svg"
+          className="mr-2"
+          src="/images/MemoryLane.png"
           alt="Next.js logo"
           width={40}
           height={40}

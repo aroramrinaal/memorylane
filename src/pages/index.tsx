@@ -201,7 +201,7 @@ const MeetOurStaff = () => {
           gridGap: '20px'
         }}>
     <div style={{textAlign:'center'}}>
-      <img style={styles.profilePic} src="/images/Aditya.jpeg" alt="Aditya Madiya"/>
+      <img style={styles.profilePic} src="https://i.imgur.com/uS36SnH.jpeg" alt="Aditya Madiya"/>
       <h3 className='font-bold text-black mt-4'>Aditya Madiya</h3>      
     </div>
     <div style={{textAlign:'center'}}>
