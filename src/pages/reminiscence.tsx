@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import NavBar from '@/components/Navbar'
-import { Button } from '@/components/ui/button'
+import NavBar from '@/Components/NavBar'
+import { Button } from '@/Components/ui/button'
 import { toast } from 'react-hot-toast' // Add this import
 interface UploadedImage {
   fileUrl: string

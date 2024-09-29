@@ -1,6 +1,6 @@
 import React from 'react';
-import NavBar from '@/components/Navbar';
-import { Button } from "@/components/ui/button"
+import NavBar from '@/Components/NavBar';
+import { Button } from "@/Components/ui/button"
 
 const OurMission: React.FC = () => {
   return (

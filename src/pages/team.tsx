@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from '@/components/Navbar';
+import NavBar from '@/Components/NavBar';
 import Image from "next/image"
 
 const TeamMember: React.FC<{ name: string; image: string }> = ({ name, image }) => (
