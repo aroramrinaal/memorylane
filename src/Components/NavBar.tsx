@@ -1,15 +1,5 @@
 import React, { useState } from 'react';
-import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
 
 const NavBar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,43 +12,44 @@ const NavBar: React.FC = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <NavigationMenu className="hidden md:flex md:mx-auto border-none">
-          <NavigationMenuList>
-            <NavigationMenuItem>
-              <Link href="/" legacyBehavior passHref>
-                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), navItemStyle)}>
-                  Home
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger className={navItemStyle}>About Us</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] bg-black">
-                  <ListItem href="/ourmission" title="Mission">
-                    Learn about our goals and values
-                  </ListItem>
-                  <ListItem href="/team" title="Team">
-                    Meet the people behind Memory Lane
-                  </ListItem>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger className={navItemStyle}>Solutions</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] bg-black">
-                  <ListItem href="/reminiscence" title="Reminiscence">
-                    Explore our memory enhancement tools
-                  </ListItem>
-                  <ListItem href="/medtrackerpage" title="Med Tracker">
-                    Keep track of your medications easily
-                  </ListItem>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
+        <div className="hidden md:flex space-x-6 mx-auto">
+          <Link href="/" className={navItemStyle}>
+            Home
+          </Link>
+          <div className="relative group">
+            <button className={`${navItemStyle} focus:outline-none`}>
+              About Us
+            </button>
+            <div className="absolute left-1/2 transform -translate-x-1/2 mt-2 w-48 rounded-md shadow-lg bg-black opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+              <div className="py-1">
+                <Link href="/ourmission" className={dropdownItemStyle}>
+                  Mission
+                </Link>
+                <Link href="/team" className={dropdownItemStyle}>
+                  Team
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className="relative group">
+            <button className={`${navItemStyle} focus:outline-none`}>
+              Solutions
+            </button>
+            <div className="absolute left-1/2 transform -translate-x-1/2 mt-2 w-48 rounded-md shadow-lg bg-black opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+              <div className="py-1">
+                <Link href="/reminiscence" className={dropdownItemStyle}>
+                  Reminiscence
+                </Link>
+                <Link href="/medtrackerpage" className={dropdownItemStyle}>
+                  Med Tracker
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Placeholder div for symmetry */}
+        <div className="hidden md:block w-[100px]"></div>
 
         {/* Mobile menu button */}
         <button 
@@ -116,31 +107,6 @@ const NavBar: React.FC = () => {
 };
 
 const navItemStyle = "text-white hover:text-green-500 transition-colors";
-
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-green-500 hover:text-white text-white",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-gray-300">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  )
-})
-ListItem.displayName = "ListItem"
+const dropdownItemStyle = "block px-4 py-2 text-sm text-white hover:bg-green-500 hover:text-white";
 
 export default NavBar;
