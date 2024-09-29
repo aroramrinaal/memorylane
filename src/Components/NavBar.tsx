@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import {
   NavigationMenu,
@@ -8,8 +9,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/Components/ui/navigation-menu"
-import { cn } from "@/lib/utils"
+} from "@/components/ui/navigation-menu"
 
 const NavBar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
