@@ -1,5 +1,5 @@
 import Image from "next/image"
-import NavBar from "@/components/NavBar"
+import NavBar from "@/components/Navbar"
 import { Button } from "@/components/ui/button"
 
 export default function LandingPage() {
