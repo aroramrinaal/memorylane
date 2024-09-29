@@ -20,10 +20,10 @@ const TeamMember: React.FC<{ name: string; image: string }> = ({ name, image }) 
 
 const TeamPage: React.FC = () => {
   const teamMembers = [
-    { name: "Mrinaal Arora", image: "/team/john-doe.jpg" },
-    { name: "Tien Dat Dang", image: "/team/jane-smith.jpg" },
-    { name: "Aditya Madiya", image: "/team/mike-johnson.jpg" },
-    { name: "Atharva Verma", image: "/team/sarah-brown.jpg" },
+    { name: "Mrinaal Arora", image: "/team/mrinaal.jpg" },
+    { name: "Tien Dat Dang", image: "/team/tien.jpg" },
+    { name: "Aditya Madiya", image: "/team/aditya.jpg" },
+    { name: "Atharva Verma", image: "/team/arty.jpg" },
   ];
 
   return (

@@ -12,7 +12,7 @@ const NavBar: React.FC = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-6 mx-auto">
+        <div className="hidden md:flex space-x-6 ml-auto pr-8">
           <Link href="/" className={navItemStyle}>
             Home
           </Link>
@@ -47,9 +47,6 @@ const NavBar: React.FC = () => {
             </div>
           </div>
         </div>
-
-        {/* Placeholder div for symmetry */}
-        <div className="hidden md:block w-[100px]"></div>
 
         {/* Mobile menu button */}
         <button 
