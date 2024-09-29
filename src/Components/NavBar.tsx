@@ -17,13 +17,15 @@ const styles: { [key: string]: React.CSSProperties } = {
     fontSize: '20px',
     fontWeight: 'bold',
     zIndex: '100',
-    width: '100%'
+    width: '100%',
+    height: '100px'
   },
   navContainer: {
     display: 'flex',
     justifyContent: 'space-between',
     width: '100%',
-    paddingRight: '30px'
+    paddingRight: '30px',
+    margin: 'auto 0px'
   },
   navTitle: {
     color: 'white',
@@ -33,6 +35,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     listStyleType: 'none',
     display: 'flex',
     gap: '30px',
+    
   },
   navItem: {
     position: 'relative',
@@ -42,6 +45,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   navLink: {
     textDecoration: 'none',
     color: 'white',
+    fontSize: '15px'
   },
   dropdownMenu: {
     display: 'none',

@@ -79,27 +79,24 @@ const AboutSection = () => (
       </div>
       <div className="w-1/2">
         <p className="text-green-500 mb-2">ABOUT US</p>
-        <h2 className="text-4xl font-bold mb-8">Professional Care Can Trust & We Provide</h2>
+        <h2 className="text-4xl font-bold mb-8">Dedicated Support for Dementia Care</h2>
         <div className="mb-8">
-          <div className="flex items-start mb-4">
-            <img src="/api/placeholder/40/40" alt="Nursing icon" className="mr-4" />
+          <div className="flex items-start mb-4">            
             <div>
-              <h3 className="text-xl font-bold mb-2">Expert Nursing Staff</h3>
-              <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+              <h3 className="text-xl font-bold mb-2">Compassionate Caregiving Team</h3>
+              <p>We provide personalized support for individuals with dementia, ensuring they receive the highest level of care from experienced professionals.</p>
             </div>
           </div>
-          <div className="flex items-start mb-4">
-            <img src="/api/placeholder/40/40" alt="Nursing icon" className="mr-4" />
+          <div className="flex items-start mb-4">            
             <div>
-              <h3 className="text-xl font-bold mb-2">Expert Nursing Staff</h3>
-              <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+              <h3 className="text-xl font-bold mb-2">Holistic Mental Health Services</h3>
+              <p>Our approach combines medical expertise with emotional support, offering comprehensive services tailored to the unique needs of those living with dementia and their families.</p>
             </div>
           </div>
-          <div className="flex items-start">
-            <img src="/api/placeholder/40/40" alt="Social services icon" className="mr-4" />
+          <div className="flex items-start">            
             <div>
-              <h3 className="text-xl font-bold mb-2">Medical Social Services</h3>
-              <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
+              <h3 className="text-xl font-bold mb-2">Comprehensive Family Support</h3>
+              <p>Our goal is to empower caregivers with the tools and knowledge they need to provide effective support and maintain their own well-being.</p>
             </div>
           </div>
         </div>
@@ -109,12 +106,14 @@ const AboutSection = () => (
 );
 
 const ServiceCard : React.FC<ServiceCardProps> = ({ icon, title, description }) => (
-  <div className="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-md">
+  <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
     <div className="text-green-500 mb-4">
       {icon}
     </div>
+    <div className="flex-grow text-center">
     <h3 className="text-xl text-black font-bold mb-2">{title}</h3>
     <p className="mb-4 text-gray-600">{description}</p>
+    </div>
     <button className="text-black font-semibold hover:underline">
       LEARN MORE
     </button>
@@ -122,32 +121,31 @@ const ServiceCard : React.FC<ServiceCardProps> = ({ icon, title, description }) 
 );
 
 const OurServices = () => (
-  <section className="py-16 bg-gray-100">
-    <div className="container mx-auto px-4">
+  <section className="py-10 bg-gray-100">
+    <div className="container mx-auto">
       <h2 className="text-center text-green-500 text-lg mb-2">OUR SERVICES</h2>
       <h3 className="text-center text-black text-4xl font-bold mb-4">
-        Quality Senior Living, Every<br />Step of the Way
+      Empowering Memories, Enhancing Lives
       </h3>
       <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-        We go the extra mile to create a warm and nurturing environment
-        where seniors can thrive.
+      MemoryLane is dedicated to fostering connections by offering a platform that helps dementia patients and caregivers reminisce and engage through personalized memory experiences.
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
         <ServiceCard
           icon={<svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             <path d="M12 16V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             <path d="M12 8H12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>}
-          title="Respite Care"
-          description="Pellentesque varittus accumsan temp Nullam placerat aliquet purus a mollis Nunc porta."
+          title="Memory Tagging"
+          description="AI is used to automatically tag and organize uploaded photos and videos, making it easier for caregivers to navigate meaningful memories."
         />
         <ServiceCard
           icon={<svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M20.84 4.61A5.5 5.5 0 0 0 12 5.67C9.64 3.88 6.39 3.94 4.61 5.72C2.83 7.5 2.88 10.75 4.67 13.12C6.46 15.49 13.37 22 13.37 22L12 23.37L20.84 4.61Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>}
-          title="Memory Care"
-          description="Pellentesque varittus accumsan temp Nullam placerat aliquet purus a mollis Nunc porta."
+          title="Convo Starters"
+          description="Our platform generates personalized conversation prompts based on uploaded media, facilitating meaningful discussions between caregivers and dementia patients."
         />
         <ServiceCard
           icon={<svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -156,16 +154,24 @@ const OurServices = () => (
             <path d="M23 21V19C22.9986 17.1771 21.7078 15.5857 19.94 15.13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             <path d="M20 7C21.7686 7 23.2081 8.42412 23.2081 10.1818C23.2081 11.8443 21.9192 13.2209 20.2529 13.3373" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>}
-          title="Assisted Living"
-          description="Pellentesque varittus accumsan temp Nullam placerat aliquet purus a mollis Nunc porta."
+          title="Medicine Tracker"
+          description="The Medicine Tracker helps caregivers manage medication schedules by providing reminders and tracking adherence to ensure accurate medication intake for dementia patients."
         />
         <ServiceCard
           icon={<svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             <path d="M9 22V12H15V22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>}
-          title="Independent Living"
-          description="Pellentesque varittus accumsan temp Nullam placerat aliquet purus a mollis Nunc porta."
+          title="Activity Scheduler"
+          description="The Activity Scheduler allows caregivers to plan and organize daily activities tailored to the patient’s interests, promoting engagement and cognitive function."
+        />
+        <ServiceCard
+          icon={<svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M9 22V12H15V22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>}
+          title="RT Collaboration"
+          description="MemoryLane enables real-time collaboration among family members and caregivers, enhancing the personalization of the reminiscence therapy experience."
         />
       </div>
     </div>
